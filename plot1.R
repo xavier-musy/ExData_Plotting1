@@ -14,8 +14,11 @@ plot1 <- function() {
     unlink(temp)
   }
   
-  ## read subset of data
-  
+  ## read subset of data: 
+  ## skip down to the first day we are interested in (2/1/2007)
+  ## and read 2 days worth:  2 x 24 x 60 = 2880 minutes / rows
+  library(data.table)
+  data <- fread(fileName, sep=";", skip="1/2/2007", na.strings="?", nrows=2880)
   
   ## plot
   
