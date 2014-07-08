@@ -18,13 +18,18 @@ plot1 <- function() {
   ## skip down to the first day we are interested in (2/1/2007)
   ## and read 2 days worth:  2 x 24 x 60 = 2880 minutes / rows
   library(data.table)
-  data <- fread(fileName, sep=";", skip="1/2/2007", na.strings="?", nrows=2880)
+  data <- fread(fileName, sep=";", skip="1/2/2007", na.strings="?", nrows=2880, header=TRUE)
+  
+  # set column names
+  setnames(data, 1:9, c("Date", "Time", "Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3"))
   
   ## plot
-  
-  ## annotate
+  hist(data$Global_active_power, main="Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
   
   ## save the file
+  dev.copy(png,filename="plot1.png")
+  # make plot
+  dev.off()
 
 
 }
