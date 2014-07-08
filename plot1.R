@@ -28,7 +28,6 @@ plot1 <- function() {
   
   ## save the file
   dev.copy(png,filename="plot1.png")
-  # make plot
   dev.off()
 
 
