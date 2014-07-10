@@ -18,7 +18,7 @@ plot1 <- function() {
   ## skip down to the first day we are interested in (2/1/2007)
   ## and read 2 days worth:  2 x 24 x 60 = 2880 minutes / rows
   library(data.table)
-  data <- fread(fileName, sep=";", skip="1/2/2007", na.strings="?", nrows=2880, header=TRUE)
+  data <- fread(fileName, sep=";", skip="1/2/2007", na.strings="?", nrows=2880, header=FALSE)
   
   # set column names
   setnames(data, 1:9, c("Date", "Time", "Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3"))
