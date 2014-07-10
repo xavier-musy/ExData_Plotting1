@@ -23,11 +23,11 @@ plot3 <- function() {
   # set column names
   setnames(data, 1:9, c("Date", "Time", "Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3"))
   
-  # open gd to plot to
-  png(filename="plot3.png", width=480, height=480, units="px")
-  
   #add date-time column
   data[,DateTime:= as.POSIXct(paste(Date, Time), format="%d/%m/%Y %H:%M:%S")]  # POSIXlt not supported by Data.Table so can't use strptime
+  
+  # open gd to plot to
+  png(filename="plot3.png", width=480, height=480, units="px")
   
   with(data, plot(DateTime, Sub_metering_1, type="l",main="",xlab="",ylab="Energy sub metering",col="Black"))
   with(data, lines(DateTime, Sub_metering_2, col="red"))
