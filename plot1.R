@@ -23,12 +23,15 @@ plot1 <- function() {
   # set column names
   setnames(data, 1:9, c("Date", "Time", "Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3"))
   
+  # open gd to plot to
+  png(filename="plot1.png", width=480, height=480, units="px")
+  
   ## plot
   hist(data$Global_active_power, main="Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
   
   ## save the file
-  dev.copy(png,filename="plot1.png")
   dev.off()
+  
 
 
 }

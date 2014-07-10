@@ -26,11 +26,13 @@ plot2 <- function() {
   #add date-time column
   data[,DateTime:= as.POSIXct(paste(Date, Time), format="%d/%m/%Y %H:%M:%S")]  # POSIXlt not supported by Data.Table so can't use strptime
   
+  # open gd to plot to
+  png(filename="plot2.png", width=480, height=480, units="px")
+  
   ## plot
   plot( data$DateTime, data$Global_active_power, xlab="", ylab="Global Active Power (kilowatts)", type="l")
   
   ## save the file
-  dev.copy(png,filename="plot2.png")
   dev.off()
   
   
